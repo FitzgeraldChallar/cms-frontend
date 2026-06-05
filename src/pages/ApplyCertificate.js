@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import API_URL from "../config";
 
 const ApplyCertificate = () => {
   const navigate = useNavigate();
@@ -190,7 +191,7 @@ const ApplyCertificate = () => {
     });
 
     try {
-      await axios.post('http://localhost:8000/api/applications/', data, {
+      await axios.post(`${API_URL}/api/applications/`, data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       navigate('/application-confirmation');

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../config";
 
 const ApplyLicense = () => {
   const [formData, setFormData] = useState({
@@ -141,7 +142,7 @@ const ApplyLicense = () => {
     }
   
     try {
-      await axios.post("http://localhost:8000/api/license-applications/", completeData); 
+      await axios.post(`${API_URL}/api/license-applications/`, completeData); 
       setSuccess(true);
       navigate("/application-success");
     } catch (err) {

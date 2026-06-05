@@ -13,6 +13,8 @@ import {
   Legend
 } from 'chart.js';
 import agencyLogo from '../assets/nwashc_logo.png';
+import API_URL from "../config";
+
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -31,7 +33,7 @@ const Dashboard = () => {
   const fetchCertificates = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:8000/api/certificates/');
+      const response = await axios.get(`${API_URL}/api/certificates/`);
       setCertificates(response.data);
       setLastUpdated(new Date().toLocaleTimeString());
     } catch (error) {

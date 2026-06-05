@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import API_URL from "../config";
+
 
 const ApplyClearance = () => {
   const [formData, setFormData] = useState({
@@ -111,7 +113,7 @@ const ApplyClearance = () => {
     });
 
     try {
-      await axios.post('http://localhost:8000/api/clearance-applications/', submission, {
+      await axios.post(`${API_URL}/api/clearance-applications/`, submission, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

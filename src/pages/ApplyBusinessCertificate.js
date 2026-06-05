@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useSearchParams } from "react-router-dom";
+import API_URL from "../config";
 
 
 const ApplyBusinessCertificate = () => { 
@@ -88,7 +89,7 @@ const ApplyBusinessCertificate = () => {
   const handleInitPayment = async () => {
   try {
     const response = await axios.post(
-      "http://localhost:8000/api/payments/initialize/",
+       `${API_URL}/api/payments/initialize/`,
       {
         service_type_code: "BUS_001",
         application_model: "BusinessCertificateApplication",
@@ -128,7 +129,7 @@ const ApplyBusinessCertificate = () => {
     }
 
     try {
-      await axios.post('http://localhost:8000/api/business-certificate-applications/', data, {
+      await axios.post(`${API_URL}/api/business-certificate-applications/`, data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       navigate("/business-certificate-success");
